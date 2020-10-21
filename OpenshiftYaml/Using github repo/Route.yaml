@@ -1,0 +1,42 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: hello-world-node-js-git
+  namespace: cc-uc-1-voyaging-coders
+  selfLink: >-
+    /apis/route.openshift.io/v1/namespaces/cc-uc-1-voyaging-coders/routes/hello-world-node-js-git
+  uid: 88be35c9-8a66-4372-ad53-52e8942c0e46
+  resourceVersion: '7591202'
+  creationTimestamp: '2020-05-10T02:48:01Z'
+  labels:
+    app: hello-world-node-js-git
+    app.kubernetes.io/component: hello-world-node-js-git
+    app.kubernetes.io/instance: hello-world-node-js-git
+    app.kubernetes.io/name: nodejs
+    app.kubernetes.io/part-of: hello-world-node-js-git-app
+    app.openshift.io/runtime: nodejs
+    app.openshift.io/runtime-version: 10-SCL
+  annotations:
+    openshift.io/host.generated: 'true'
+spec:
+  host: >-
+    hello-world-node-js-git-cc-uc-1-voyaging-coders.container-crush-01-4044f3a4e314f4bcb433696c70d13be9-0000.che01.containers.appdomain.cloud
+  to:
+    kind: Service
+    name: hello-world-node-js-git
+    weight: 100
+  port:
+    targetPort: 8080-tcp
+  wildcardPolicy: None
+status:
+  ingress:
+    - host: >-
+        hello-world-node-js-git-cc-uc-1-voyaging-coders.container-crush-01-4044f3a4e314f4bcb433696c70d13be9-0000.che01.containers.appdomain.cloud
+      routerName: default
+      conditions:
+        - type: Admitted
+          status: 'True'
+          lastTransitionTime: '2020-05-10T02:48:01Z'
+      wildcardPolicy: None
+      routerCanonicalHostname: >-
+        container-crush-01-4044f3a4e314f4bcb433696c70d13be9-0000.che01.containers.appdomain.cloud

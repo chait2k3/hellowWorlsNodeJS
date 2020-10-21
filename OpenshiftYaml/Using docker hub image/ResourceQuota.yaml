@@ -1,0 +1,29 @@
+kind: ResourceQuota
+apiVersion: v1
+metadata:
+  name: compute-resources
+  namespace: cc-uc-1-voyaging-coders
+  selfLink: /api/v1/namespaces/cc-uc-1-voyaging-coders/resourcequotas/compute-resources
+  uid: cdb58fdb-4e86-4719-ba1f-00e42e45a281
+  resourceVersion: '8560954'
+  creationTimestamp: '2020-05-06T09:55:26Z'
+spec:
+  hard:
+    limits.cpu: 480m
+    limits.memory: 1920Mi
+    persistentvolumeclaims: '1'
+    requests.cpu: 384m
+    requests.memory: 1536Mi
+status:
+  hard:
+    limits.cpu: 480m
+    limits.memory: 1920Mi
+    persistentvolumeclaims: '1'
+    requests.cpu: 384m
+    requests.memory: 1536Mi
+  used:
+    limits.cpu: 200m
+    limits.memory: 300Mi
+    persistentvolumeclaims: '0'
+    requests.cpu: 100m
+    requests.memory: 200Mi

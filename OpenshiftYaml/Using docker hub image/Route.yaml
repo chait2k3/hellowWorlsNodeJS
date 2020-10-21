@@ -1,0 +1,43 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: helloworldnj
+  namespace: cc-uc-1-voyaging-coders
+  selfLink: >-
+    /apis/route.openshift.io/v1/namespaces/cc-uc-1-voyaging-coders/routes/helloworldnj
+  uid: 90d6125b-36cc-4b20-8203-cd40a1a36821
+  resourceVersion: '8538724'
+  creationTimestamp: '2020-05-12T02:46:08Z'
+  labels:
+    app: helloworldnj
+    app.kubernetes.io/component: helloworldnj
+    app.kubernetes.io/instance: helloworldnj
+    app.kubernetes.io/name: ''
+    app.openshift.io/runtime: ''
+    app.openshift.io/runtime-version: v1
+  annotations:
+    openshift.io/host.generated: 'true'
+spec:
+  host: >-
+    helloworldnj-cc-uc-1-voyaging-coders.container-crush-01-4044f3a4e314f4bcb433696c70d13be9-0000.che01.containers.appdomain.cloud
+  to:
+    kind: Service
+    name: helloworldnj
+    weight: 100
+  port:
+    targetPort: 8080-tcp
+  tls:
+    termination: edge
+  wildcardPolicy: None
+status:
+  ingress:
+    - host: >-
+        helloworldnj-cc-uc-1-voyaging-coders.container-crush-01-4044f3a4e314f4bcb433696c70d13be9-0000.che01.containers.appdomain.cloud
+      routerName: default
+      conditions:
+        - type: Admitted
+          status: 'True'
+          lastTransitionTime: '2020-05-12T02:46:08Z'
+      wildcardPolicy: None
+      routerCanonicalHostname: >-
+        container-crush-01-4044f3a4e314f4bcb433696c70d13be9-0000.che01.containers.appdomain.cloud

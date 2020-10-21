@@ -1,0 +1,133 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  generateName: helloworldnj-4-
+  annotations:
+    cni.projectcalico.org/podIP: 172.30.122.124/32
+    cni.projectcalico.org/podIPs: 172.30.122.124/32
+    k8s.v1.cni.cncf.io/networks-status: |-
+      [{
+          "name": "k8s-pod-network",
+          "ips": [
+              "172.30.122.124"
+          ],
+          "dns": {}
+      }]
+    openshift.io/deployment-config.latest-version: '4'
+    openshift.io/deployment-config.name: helloworldnj
+    openshift.io/deployment.name: helloworldnj-4
+    openshift.io/generated-by: OpenShiftWebConsole
+    openshift.io/scc: anyuid
+  selfLink: /api/v1/namespaces/cc-uc-1-voyaging-coders/pods/helloworldnj-4-xqdtr
+  resourceVersion: '8560946'
+  name: helloworldnj-4-xqdtr
+  uid: a7b04ab7-b808-4721-ae28-848c51cefa66
+  creationTimestamp: '2020-05-12T05:25:04Z'
+  namespace: cc-uc-1-voyaging-coders
+  ownerReferences:
+    - apiVersion: v1
+      kind: ReplicationController
+      name: helloworldnj-4
+      uid: ec3ea31e-7af2-499d-88de-d5e47c75037e
+      controller: true
+      blockOwnerDeletion: true
+  labels:
+    app: helloworldnj
+    deployment: helloworldnj-4
+    deploymentconfig: helloworldnj
+spec:
+  restartPolicy: Always
+  serviceAccountName: default
+  imagePullSecrets:
+    - name: default-dockercfg-xwspz
+  priority: 0
+  schedulerName: default-scheduler
+  enableServiceLinks: true
+  terminationGracePeriodSeconds: 30
+  nodeName: 10.162.255.75
+  securityContext:
+    seLinuxOptions:
+      level: 's0:c58,c32'
+  containers:
+    - resources:
+        limits:
+          cpu: 200m
+          memory: 300Mi
+        requests:
+          cpu: 100m
+          memory: 200Mi
+      terminationMessagePath: /dev/termination-log
+      name: helloworldnj
+      securityContext:
+        capabilities:
+          drop:
+            - MKNOD
+      ports:
+        - containerPort: 3000
+          protocol: TCP
+      imagePullPolicy: IfNotPresent
+      volumeMounts:
+        - name: default-token-tmlb5
+          readOnly: true
+          mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      terminationMessagePolicy: File
+      image: >-
+        docker.io/chait2k3/helloworldnj@sha256:afb6f9d2906c790ea4fb954f48b4a5d60e87b78f52905eccd7166fb54a138b5c
+  serviceAccount: default
+  volumes:
+    - name: default-token-tmlb5
+      secret:
+        secretName: default-token-tmlb5
+        defaultMode: 420
+  dnsPolicy: ClusterFirst
+  tolerations:
+    - key: node.kubernetes.io/not-ready
+      operator: Exists
+      effect: NoExecute
+      tolerationSeconds: 300
+    - key: node.kubernetes.io/unreachable
+      operator: Exists
+      effect: NoExecute
+      tolerationSeconds: 300
+    - key: node.kubernetes.io/memory-pressure
+      operator: Exists
+      effect: NoSchedule
+status:
+  phase: Running
+  conditions:
+    - type: Initialized
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2020-05-12T05:25:04Z'
+    - type: Ready
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2020-05-12T05:25:20Z'
+    - type: ContainersReady
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2020-05-12T05:25:20Z'
+    - type: PodScheduled
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2020-05-12T05:25:04Z'
+  hostIP: 10.162.255.75
+  podIP: 172.30.122.124
+  podIPs:
+    - ip: 172.30.122.124
+  startTime: '2020-05-12T05:25:04Z'
+  containerStatuses:
+    - restartCount: 0
+      started: true
+      ready: true
+      name: helloworldnj
+      state:
+        running:
+          startedAt: '2020-05-12T05:25:19Z'
+      imageID: >-
+        docker.io/chait2k3/helloworldnj@sha256:afb6f9d2906c790ea4fb954f48b4a5d60e87b78f52905eccd7166fb54a138b5c
+      image: >-
+        docker.io/chait2k3/helloworldnj@sha256:afb6f9d2906c790ea4fb954f48b4a5d60e87b78f52905eccd7166fb54a138b5c
+      lastState: {}
+      containerID: 'cri-o://ad77b72bbe9c3ece980539535b573bd5ec54751e0a24b86fe80519696037f373'
+  qosClass: Burstable

@@ -1,0 +1,71 @@
+kind: Build
+apiVersion: build.openshift.io/v1
+metadata:
+  annotations:
+    openshift.io/build-config.name: hello-world-node-js-git
+    openshift.io/build.number: '1'
+  selfLink: >-
+    /apis/build.openshift.io/v1/namespaces/cc-uc-1-voyaging-coders/builds/hello-world-node-js-git-1
+  resourceVersion: '7591209'
+  name: hello-world-node-js-git-1
+  uid: 76dcfd07-2aba-476a-b49e-3e10e7625a6d
+  creationTimestamp: '2020-05-10T02:48:02Z'
+  namespace: cc-uc-1-voyaging-coders
+  ownerReferences:
+    - apiVersion: build.openshift.io/v1
+      kind: BuildConfig
+      name: hello-world-node-js-git
+      uid: effda2dd-169f-4320-bdad-e7f3e6516734
+      controller: true
+  labels:
+    app: hello-world-node-js-git
+    app.kubernetes.io/part-of: hello-world-node-js-git-app
+    app.kubernetes.io/instance: hello-world-node-js-git
+    openshift.io/build-config.name: hello-world-node-js-git
+    app.kubernetes.io/component: hello-world-node-js-git
+    openshift.io/build.start-policy: Serial
+    buildconfig: hello-world-node-js-git
+    app.openshift.io/runtime: nodejs
+    app.kubernetes.io/name: nodejs
+    app.openshift.io/runtime-version: 10-SCL
+spec:
+  serviceAccount: builder
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/chait2k3/HelloWorldNodeJS.git'
+    contextDir: /
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: DockerImage
+        name: >-
+          image-registry.openshift-image-registry.svc:5000/openshift/nodejs@sha256:85f7df07bd2f71aea40b01f91e06377dc12020ac4be63ad9296b4ce7cf2f4ee4
+      pullSecret:
+        name: builder-dockercfg-phrzb
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'hello-world-node-js-git:latest'
+  resources: {}
+  postCommit: {}
+  nodeSelector: null
+  triggeredBy:
+    - message: Image change
+      imageChangeBuild:
+        imageID: >-
+          image-registry.openshift-image-registry.svc:5000/openshift/nodejs@sha256:85f7df07bd2f71aea40b01f91e06377dc12020ac4be63ad9296b4ce7cf2f4ee4
+        fromRef:
+          kind: ImageStreamTag
+          namespace: openshift
+          name: 'nodejs:10-SCL'
+status:
+  phase: New
+  reason: CannotCreateBuildPod
+  message: Failed creating build pod.
+  config:
+    kind: BuildConfig
+    namespace: cc-uc-1-voyaging-coders
+    name: hello-world-node-js-git
+  output: {}
