@@ -1,0 +1,34 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: hello-world-node-js-git
+  namespace: cc-uc-1-voyaging-coders
+  selfLink: /api/v1/namespaces/cc-uc-1-voyaging-coders/services/hello-world-node-js-git
+  uid: 983c3348-840c-4fda-8e0b-77240b521244
+  resourceVersion: '7591197'
+  creationTimestamp: '2020-05-10T02:48:01Z'
+  labels:
+    app: hello-world-node-js-git
+    app.kubernetes.io/component: hello-world-node-js-git
+    app.kubernetes.io/instance: hello-world-node-js-git
+    app.kubernetes.io/name: nodejs
+    app.kubernetes.io/part-of: hello-world-node-js-git-app
+    app.openshift.io/runtime: nodejs
+    app.openshift.io/runtime-version: 10-SCL
+  annotations:
+    app.openshift.io/vcs-ref: master
+    app.openshift.io/vcs-uri: 'https://github.com/chait2k3/HelloWorldNodeJS.git'
+spec:
+  ports:
+    - name: 8080-tcp
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: hello-world-node-js-git
+    deploymentconfig: hello-world-node-js-git
+  clusterIP: 172.21.129.229
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

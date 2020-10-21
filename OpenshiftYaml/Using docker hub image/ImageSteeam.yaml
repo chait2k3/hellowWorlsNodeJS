@@ -1,0 +1,44 @@
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  annotations:
+    openshift.io/image.dockerRepositoryCheck: '2020-05-12T02:46:12Z'
+  selfLink: >-
+    /apis/image.openshift.io/v1/namespaces/cc-uc-1-voyaging-coders/imagestreams/helloworldnj
+  resourceVersion: '8508192'
+  name: helloworldnj
+  uid: 01980d06-c209-4d79-bf45-14b8bcecc221
+  creationTimestamp: '2020-05-12T02:46:07Z'
+  generation: 2
+  namespace: cc-uc-1-voyaging-coders
+  labels:
+    app: helloworldnj
+    app.kubernetes.io/component: helloworldnj
+    app.kubernetes.io/instance: helloworldnj
+spec:
+  lookupPolicy:
+    local: false
+  tags:
+    - name: v1
+      annotations:
+        openshift.io/generated-by: OpenShiftWebConsole
+        openshift.io/imported-from: 'docker.io/chait2k3/helloworldnj:v1'
+      from:
+        kind: DockerImage
+        name: 'docker.io/chait2k3/helloworldnj:v1'
+      generation: 2
+      importPolicy: {}
+      referencePolicy:
+        type: Source
+status:
+  dockerImageRepository: >-
+    image-registry.openshift-image-registry.svc:5000/cc-uc-1-voyaging-coders/helloworldnj
+  tags:
+    - tag: v1
+      items:
+        - created: '2020-05-12T02:46:12Z'
+          dockerImageReference: >-
+            docker.io/chait2k3/helloworldnj@sha256:afb6f9d2906c790ea4fb954f48b4a5d60e87b78f52905eccd7166fb54a138b5c
+          image: >-
+            sha256:afb6f9d2906c790ea4fb954f48b4a5d60e87b78f52905eccd7166fb54a138b5c
+          generation: 2

@@ -1,0 +1,108 @@
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftWebConsole
+  selfLink: >-
+    /apis/apps.openshift.io/v1/namespaces/cc-uc-1-voyaging-coders/deploymentconfigs/helloworldnj
+  resourceVersion: '8560958'
+  name: helloworldnj
+  uid: c48a79b1-0b8e-4b7d-8f8d-89d9e8a1bc1f
+  creationTimestamp: '2020-05-12T02:46:08Z'
+  generation: 6
+  namespace: cc-uc-1-voyaging-coders
+  labels:
+    app: helloworldnj
+    app.kubernetes.io/component: helloworldnj
+    app.kubernetes.io/instance: helloworldnj
+spec:
+  strategy:
+    type: Rolling
+    rollingParams:
+      updatePeriodSeconds: 1
+      intervalSeconds: 1
+      timeoutSeconds: 600
+      maxUnavailable: 25%
+      maxSurge: 25%
+    resources:
+      limits:
+        cpu: 200m
+        memory: 300Mi
+      requests:
+        cpu: 100m
+        memory: 200Mi
+    activeDeadlineSeconds: 21600
+  triggers:
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+          - helloworldnj
+        from:
+          kind: ImageStreamTag
+          namespace: cc-uc-1-voyaging-coders
+          name: 'helloworldnj:v1'
+        lastTriggeredImage: >-
+          docker.io/chait2k3/helloworldnj@sha256:afb6f9d2906c790ea4fb954f48b4a5d60e87b78f52905eccd7166fb54a138b5c
+    - type: ConfigChange
+  replicas: 1
+  revisionHistoryLimit: 10
+  test: false
+  selector:
+    app: helloworldnj
+    deploymentconfig: helloworldnj
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: helloworldnj
+        deploymentconfig: helloworldnj
+      annotations:
+        openshift.io/generated-by: OpenShiftWebConsole
+    spec:
+      containers:
+        - name: helloworldnj
+          image: >-
+            docker.io/chait2k3/helloworldnj@sha256:afb6f9d2906c790ea4fb954f48b4a5d60e87b78f52905eccd7166fb54a138b5c
+          ports:
+            - containerPort: 3000
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 200m
+              memory: 300Mi
+            requests:
+              cpu: 100m
+              memory: 200Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+status:
+  observedGeneration: 6
+  details:
+    message: config change
+    causes:
+      - type: ConfigChange
+  availableReplicas: 1
+  unavailableReplicas: 0
+  latestVersion: 4
+  updatedReplicas: 1
+  conditions:
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2020-05-12T05:25:20Z'
+      lastTransitionTime: '2020-05-12T05:25:20Z'
+      message: Deployment config has minimum availability.
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2020-05-12T05:25:21Z'
+      lastTransitionTime: '2020-05-12T05:25:04Z'
+      reason: NewReplicationControllerAvailable
+      message: replication controller "helloworldnj-4" successfully rolled out
+  replicas: 1
+  readyReplicas: 1
