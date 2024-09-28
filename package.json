@@ -19,6 +19,6 @@
   },
   "homepage": "https://github.com/chait2k3/hellowWorlsNodeJS#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.21.0"
   }
 }
